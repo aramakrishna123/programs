@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Encoder MM",
+            "type": "shell",
+            "command": "C:\\Users\\Admin\\bin\\cmake.EXE",
+            "args": [
+                "--build",
+                "${workspaceFolder}\\build\\Debug"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash Encoder MM",
+            "type": "shell",
+            "command": "E:\\INTERN\\stm32cube programmer\\bin\\STM32_Programmer_CLI.exe",
+            "args": [
+                "-c",
+                "port=SWD",
+                "-w",
+                "${workspaceFolder}\\build\\Debug\\encoder_mm.elf",
+                "-v",
+                "-rst"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build and Flash Encoder MM",
+            "type": "shell",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Build Encoder MM",
+                "Flash Encoder MM"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

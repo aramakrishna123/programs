@@ -1,0 +1,27 @@
+# ninja log v7
+268	1452	8100494523869879	CMakeFiles/servo_rotatemotor.dir/startup_stm32f446xx.s.obj	5d371c69571a1100
+119	3501	8100494522393642	CMakeFiles/servo_rotatemotor.dir/Core/Src/sysmem.c.obj	81c70a549066989e
+200	3520	8100494523153353	CMakeFiles/servo_rotatemotor.dir/Core/Src/syscalls.c.obj	20bf31112690b8d
+107	3659	8100494522253564	CMakeFiles/servo_rotatemotor.dir/Core/Src/stm32f4xx_hal_msp.c.obj	64f1ad3cd787df3a
+90	3674	8100494522102625	CMakeFiles/servo_rotatemotor.dir/Core/Src/stm32f4xx_it.c.obj	9eadcc774334b83d
+20	355	8101227289629535	CMakeFiles/servo_rotatemotor.dir/Core/Src/main.c.obj	e5d63e3a2025935a
+1453	3698	8100494535737015	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f4xx.c.obj	c403eaacbfd17d31
+39	1307	8100495088630948	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj	997008b86cbb9b15
+32	984	8100495088570813	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj	598c17d2e7d016f4
+48	1070	8100495088728351	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj	c049aeda8bcfa3b8
+57	1047	8100495088820607	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj	86b4be2ad27f7d51
+66	1032	8100495088911936	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj	ab107b574fa79548
+984	2080	8100495098097058	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj	39a1388387fbd392
+1047	2054	8100495098715412	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj	d4798df6250569bd
+1032	2040	8100495098573476	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj	11904c88f018cc21
+1070	2099	8100495098957751	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj	753c9ec3816d21ad
+1087	2012	8100495099123955	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj	e91a84d8aaab8916
+1307	2289	8100495101307813	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj	3eb80183ff67c354
+2080	2768	8100495109051034	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/BSP/STM32F4xx-Nucleo/stm32f4xx_nucleo.c.obj	7d09182179e2af83
+2040	2795	8100495108645634	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj	5d1fb76f44a442d4
+2012	2793	8100495108376735	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj	d46060b344a235ee
+355	697	8101227293041592	servo_rotatemotor.elf	2488684058ffb174
+134	473	8102091277497170	build.ninja	843fd370015046b6
+134	473	8102091277391898	E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_rotatemotor/build/Debug/cmake_install.cmake	843fd370015046b6
+134	473	8102091277452194	E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_rotatemotor/build/Debug/cmake/stm32cubemx/cmake_install.cmake	843fd370015046b6
+2055	2993	8100495108796398	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj	97b5f682b88941c3

@@ -1,0 +1,6 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/motor_joystick/Core/Src/main.c:68:10:Joystick_Read	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/motor_joystick/Core/Src/main.c:87:5:main	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/motor_joystick/Core/Src/main.c:195:6:SystemClock_Config	88	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/motor_joystick/Core/Src/main.c:243:13:MX_ADC1_Init	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/motor_joystick/Core/Src/main.c:295:13:MX_GPIO_Init	48	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/motor_joystick/Core/Src/main.c:345:6:Error_Handler	4	static,ignoring_inline_asm

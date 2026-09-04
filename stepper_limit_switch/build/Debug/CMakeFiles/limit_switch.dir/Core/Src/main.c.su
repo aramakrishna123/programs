@@ -1,0 +1,6 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/limit_switch/Core/Src/main.c:33:9:Stepper_Step	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/limit_switch/Core/Src/main.c:98:9:Stepper_Rotate	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/limit_switch/Core/Src/main.c:131:5:main	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/limit_switch/Core/Src/main.c:250:6:SystemClock_Config	88	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/limit_switch/Core/Src/main.c:340:13:MX_GPIO_Init	40	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/limit_switch/Core/Src/main.c:412:6:Error_Handler	4	static,ignoring_inline_asm

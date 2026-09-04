@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Encoder",
+            "type": "shell",
+            "command": "C:\\Users\\Admin\\bin\\cmake.EXE",
+            "args": [
+                "--build",
+                "${workspaceFolder}\\build\\Debug"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash Encoder",
+            "type": "shell",
+            "command": "E:\\INTERN\\stm32cube programmer\\bin\\STM32_Programmer_CLI.exe",
+            "args": [
+                "-c",
+                "port=SWD",
+                "-w",
+                "${workspaceFolder}\\build\\Debug\\encoder.elf",
+                "-v",
+                "-rst"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build and Flash Encoder",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Build Encoder",
+                "Flash Encoder"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/limit_switch/build/Debug/CMakeFiles/limit_switch.dir
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/limit_switch/build/Debug/CMakeFiles/edit_cache.dir
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/limit_switch/build/Debug/CMakeFiles/rebuild_cache.dir
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/limit_switch/build/Debug/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/limit_switch/build/Debug/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/limit_switch/build/Debug/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir

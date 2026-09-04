@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "joystick_limit_motor_encoder - Build",
+            "type": "shell",
+            "command": "C:\\Users\\Admin\\bin\\cmake.EXE",
+            "args": [
+                "--build",
+                "${workspaceFolder}\\build\\Debug"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "joystick_limit_motor_encoder - Flash",
+            "type": "shell",
+            "command": "E:\\INTERN\\stm32cube programmer\\bin\\STM32_Programmer_CLI.exe",
+            "args": [
+                "-c",
+                "port=SWD",
+                "-w",
+                "${workspaceFolder}\\build\\Debug\\joystick_limit_motor_encoder.elf",
+                "-v",
+                "-rst"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "joystick_limit_motor_encoder - Build and Flash",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "joystick_limit_motor_encoder - Build",
+                "joystick_limit_motor_encoder - Flash"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

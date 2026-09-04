@@ -1,0 +1,30 @@
+# ninja log v7
+70	715	8101376692660092	CMakeFiles/ttl_rs485_servo.dir/startup_stm32f446xx.s.obj	a6bf8b9b772cfd78
+42	1019	8101376692334761	CMakeFiles/ttl_rs485_servo.dir/Core/Src/sysmem.c.obj	6a5e34c7addec274
+55	1030	8101376692486708	CMakeFiles/ttl_rs485_servo.dir/Core/Src/syscalls.c.obj	b4cc7e0aa4135184
+3	294	8101385276869892	CMakeFiles/ttl_rs485_servo.dir/Core/Src/stm32f4xx_hal_msp.c.obj	b8bd6431adda1309
+19	1901	8101376691943824	CMakeFiles/ttl_rs485_servo.dir/Core/Src/stm32f4xx_it.c.obj	169b95b098886f83
+715	2095	8101376699001851	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f4xx.c.obj	7d31f00a5baa4ed0
+1021	2116	8101376702068651	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj	e1b574b897f93490
+1031	2143	8101376702172965	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj	3bc338fc7ceb083b
+47	929	8101377447351025	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj	3628a73ee5fca0cc
+67	951	8101377447549435	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj	48bd45012ee0944d
+31	883	8101377447160190	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj	2b3efde5a8e78b0e
+39	1003	8101377447254710	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj	bf092c0997129aad
+57	955	8101377447450345	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj	994ab878dd879769
+29	956	8101379470138904	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj	9ddf45f44aba5e46
+39	1036	8101379470190287	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj	af10cc628718b07f
+75	965	8101379470579528	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj	bc3e60cff3c32cc8
+60	1081	8101379470499222	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj	da9fad5d355ae805
+48	997	8101379470333992	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj	d68c9b569fb1ef8d
+28	570	8101380070108616	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj	2f08869270153d6e
+46	595	8101380070391218	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/BSP/STM32F4xx-Nucleo/stm32f4xx_nucleo.c.obj	d309b5687561b23f
+37	764	8101380070253849	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj	5851967bb45cb845
+3	491	8101382589364662	CMakeFiles/ttl_rs485_servo.dir/Core/Src/main.c.obj	b75a872cd8e69915
+295	580	8101385279797237	ttl_rs485_servo.elf	8f692ae8d2f1f5d6
+101	459	8101395124846385	build.ninja	c3b459dc96079308
+101	459	8101395124846385	E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/ttl_rs485_servo/build/Debug/cmake_install.cmake	c3b459dc96079308
+101	459	8101395124846385	E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/ttl_rs485_servo/build/Debug/cmake/stm32cubemx/cmake_install.cmake	c3b459dc96079308
+21	2524	8101395126111153	CMakeFiles/ttl_rs485_servo.dir/Core/Src/main.c.obj	b75a872cd8e69915
+72	2525	8101395126613641	CMakeFiles/ttl_rs485_servo.dir/Core/Src/stm32f4xx_hal_msp.c.obj	b8bd6431adda1309
+2526	3546	8101395151175850	ttl_rs485_servo.elf	8f692ae8d2f1f5d6

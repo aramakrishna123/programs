@@ -1,0 +1,39 @@
+
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "ttl_rs485_servo - Build",
+            "type": "shell",
+            "command": "C:\\Users\\Admin\\bin\\cmake.EXE",
+            "args": [
+                "--build",
+                "E:\\INTERN\\Stm32cube IDE\\Stm32 IDE MAX codes\\ttl_rs485_servo\\build\\Debug"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "ttl_rs485_servo - Flash",
+            "type": "shell",
+            "command": "E:\\INTERN\\stm32cube programmer\\bin\\STM32_Programmer_CLI.exe",
+            "args": [
+                "-c",
+                "port=SWD",
+                "-w",
+                "E:\\INTERN\\Stm32cube IDE\\Stm32 IDE MAX codes\\ttl_rs485_servo\\build\\Debug\\ttl_rs485_servo.elf",
+                "-v",
+                "-rst"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "ttl_rs485_servo - Build and Flash",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "ttl_rs485_servo - Build",
+                "ttl_rs485_servo - Flash"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
