@@ -1,8 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/ttl_rs485_servo/build/Debug/cmake_install.cmake",
-		"E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/ttl_rs485_servo/build/Debug/cmake/stm32cubemx/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
