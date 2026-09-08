@@ -1,0 +1,5 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/hello_serial/Core/Src/main.c:10:5:main	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/hello_serial/Core/Src/main.c:33:13:MX_USART2_UART_Init	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/hello_serial/Core/Src/main.c:52:13:MX_GPIO_Init	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/hello_serial/Core/Src/main.c:58:6:SystemClock_Config	80	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/hello_serial/Core/Src/main.c:106:6:Error_Handler	4	static,ignoring_inline_asm

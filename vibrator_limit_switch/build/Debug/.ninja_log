@@ -1,0 +1,25 @@
+# ninja log v7
+37	270	8105556177570138	CMakeFiles/vibrator_limit_switch.dir/startup_stm32f446xx.s.obj	b5e8c47813cc23ed
+23	1578	8105556177429780	CMakeFiles/vibrator_limit_switch.dir/Core/Src/sysmem.c.obj	f45efcf776a4e593
+30	1671	8105556177509982	CMakeFiles/vibrator_limit_switch.dir/Core/Src/syscalls.c.obj	30bf1325e61f491
+271	3062	8105556179873512	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f4xx.c.obj	fb56f09a38d6ba00
+9	3070	8105556177270253	CMakeFiles/vibrator_limit_switch.dir/Core/Src/stm32f4xx_it.c.obj	4b69253f92a05c79
+16	3078	8105556177353282	CMakeFiles/vibrator_limit_switch.dir/Core/Src/stm32f4xx_hal_msp.c.obj	d0b130162a04f6a7
+2	3086	8105556177148639	CMakeFiles/vibrator_limit_switch.dir/Core/Src/main.c.obj	95b9f13d06ff9db8
+1579	3096	8105556192993670	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj	bef4c1003fe67266
+1671	3292	8105556193924055	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj	365c81a789edf48c
+3062	4132	8105556207832841	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj	7e1f45563136a6b9
+3079	4151	8105556207994007	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj	4f699e6c7f612c45
+3070	4163	8105556207913093	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj	da64935be98ad0aa
+3087	4171	8105556208089313	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj	35c0fabe32f73990
+3096	4530	8105556208160700	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj	a3a113f732154310
+3295	4738	8105556210162986	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj	a0d444c9a34d15eb
+4151	5012	8105556218715394	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj	ec8d15ffd8503449
+4132	5015	8105556218527671	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj	46b09d0692364ba5
+4171	5059	8105556218926619	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj	f88c34becf510074
+4163	5171	8105556218839574	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj	f82e635f00d81a26
+4530	5329	8105556222508094	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj	df772402de29886e
+4738	5350	8105556224593258	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/BSP/STM32F4xx-Nucleo/stm32f4xx_nucleo.c.obj	728cb4aec07040c3
+5351	5620	8105556230708481	vibrator_limit_switch.elf	500c7b99b3aff2d9
+3	420	8105566613611913	CMakeFiles/vibrator_limit_switch.dir/Core/Src/main.c.obj	95b9f13d06ff9db8
+421	679	8105566617832224	vibrator_limit_switch.elf	500c7b99b3aff2d9

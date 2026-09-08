@@ -1,0 +1,17 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:125:5:main	48	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:555:17:Joystick_Read	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:584:17:Joystick_Read_Average	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:617:17:Joystick_CalibrateCenter	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:634:13:RS485_TX_Mode	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:648:13:RS485_RX_Mode	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:662:16:Servo_Checksum	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:686:26:Servo_Write	48	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:784:13:Servo_Torque	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:803:13:Servo_SetWheelMode	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:821:13:Servo_SetAcceleration	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:842:13:Servo_SetSpeed	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:906:13:MX_GPIO_Init	40	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:1008:13:MX_USART1_UART_Init	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:1050:13:MX_ADC1_Init	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:1134:6:SystemClock_Config	88	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/servo_joystick_clk_anticlk/Core/Src/main.c:1226:6:Error_Handler	4	static,ignoring_inline_asm

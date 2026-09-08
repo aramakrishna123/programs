@@ -1,0 +1,13 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/rotate_servo/Core/Src/main.c:58:5:main	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/rotate_servo/Core/Src/main.c:146:13:RS485_TX_Mode	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/rotate_servo/Core/Src/main.c:156:13:RS485_RX_Mode	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/rotate_servo/Core/Src/main.c:166:16:Servo_Checksum	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/rotate_servo/Core/Src/main.c:187:26:Servo_Write	48	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/rotate_servo/Core/Src/main.c:269:13:Servo_Torque	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/rotate_servo/Core/Src/main.c:283:13:Servo_WheelMode	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/rotate_servo/Core/Src/main.c:296:13:Servo_SetAcceleration	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/rotate_servo/Core/Src/main.c:310:13:Servo_SetSpeed	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/rotate_servo/Core/Src/main.c:329:13:MX_GPIO_Init	40	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/rotate_servo/Core/Src/main.c:393:13:MX_USART1_UART_Init	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/rotate_servo/Core/Src/main.c:432:6:SystemClock_Config	88	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/rotate_servo/Core/Src/main.c:498:6:Error_Handler	4	static,ignoring_inline_asm
