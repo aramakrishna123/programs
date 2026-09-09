@@ -1,0 +1,6 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/test_encoder.c_ledblink/Core/Src/encoder.c:36:6:Encoder_Init	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/test_encoder.c_ledblink/Core/Src/encoder.c:62:6:Encoder_Update	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/test_encoder.c_ledblink/Core/Src/encoder.c:141:9:Encoder_GetCount	4	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/test_encoder.c_ledblink/Core/Src/encoder.c:153:9:Encoder_GetPositionUM	4	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/test_encoder.c_ledblink/Core/Src/encoder.c:163:7:Encoder_GetPositionMM	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/test_encoder.c_ledblink/Core/Src/encoder.c:172:6:Encoder_Reset	4	static

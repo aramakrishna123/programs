@@ -1,0 +1,25 @@
+# ninja log v7
+55	440	8105725598614255	CMakeFiles/test_encoder.c_ledblink.dir/startup_stm32f446xx.s.obj	bb8aafb287d9ee46
+40	539	8105725598467357	CMakeFiles/test_encoder.c_ledblink.dir/Core/Src/sysmem.c.obj	bef696ce1fea94f7
+48	835	8105725598533970	CMakeFiles/test_encoder.c_ledblink.dir/Core/Src/syscalls.c.obj	6e5a0e7e31a4cb4e
+175	3298	8105722754870504	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f4xx.c.obj	6ad0f5c93680ada5
+33	643	8105725598387085	CMakeFiles/test_encoder.c_ledblink.dir/Core/Src/stm32f4xx_hal_msp.c.obj	5bebeb287abd4727
+24	661	8105725598289152	CMakeFiles/test_encoder.c_ledblink.dir/Core/Src/stm32f4xx_it.c.obj	b41c33b30db52328
+3	561	8105740890386119	CMakeFiles/test_encoder.c_ledblink.dir/Core/Src/main.c.obj	b023cc06d010d794
+194	3310	8105722755060115	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj	c6b2183ca6db0e82
+239	3301	8105722755491648	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj	b36cb3ddd6f840ea
+50	1133	8105723739573083	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj	2075c08e6a456278
+33	1182	8105723739398348	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj	f6819033e6532a72
+59	1125	8105723739682673	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj	d8546f59064ba0ba
+66	1156	8105723739754368	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj	83ece46c1381e62e
+42	1144	8105723739505204	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj	d3617de81d08ebae
+29	997	8105724667947140	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj	5bd32f30fb515990
+46	1027	8105724668113919	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj	96b64198d1a3154c
+37	960	8105724668017210	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj	a181f200f3ef70e0
+53	1048	8105724668174080	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj	6fa43b596bf270a5
+61	1025	8105724668257637	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj	cc415a48f823363c
+925	1519	8105724676894058	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj	f3b1620b4e2b0072
+997	1511	8105724677622670	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/BSP/STM32F4xx-Nucleo/stm32f4xx_nucleo.c.obj	ca0a3107c011dae3
+561	924	8105740895987544	test_encoder.c_ledblink.elf	aea930e0f799201f
+961	1697	8105724677254817	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj	804fed3fd51b8f62
+12	528	8105740890509111	CMakeFiles/test_encoder.c_ledblink.dir/Core/Src/encoder.c.obj	b53ceb2050e2d4cc
