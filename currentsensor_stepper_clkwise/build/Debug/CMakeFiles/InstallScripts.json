@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/currentsensor_stepper_clkwise/build/Debug/cmake_install.cmake",
+		"E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/currentsensor_stepper_clkwise/build/Debug/cmake/stm32cubemx/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

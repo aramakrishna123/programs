@@ -1,0 +1,8 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/isensortest_ledblink/Core/Src/isensor.c:8:16:INA219_WriteRegister	32	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/isensortest_ledblink/Core/Src/isensor.c:66:16:INA219_ReadRegister	32	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/isensortest_ledblink/Core/Src/isensor.c:116:9:INA219_IsConnected	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/isensortest_ledblink/Core/Src/isensor.c:148:9:INA219_Init	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/isensortest_ledblink/Core/Src/isensor.c:191:9:INA219_ReadShuntVoltage	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/isensortest_ledblink/Core/Src/isensor.c:248:9:INA219_ReadCurrent	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/isensortest_ledblink/Core/Src/isensor.c:303:9:INA219_ReadBusVoltage	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/isensortest_ledblink/Core/Src/isensor.c:362:9:INA219_ReadPower	24	static

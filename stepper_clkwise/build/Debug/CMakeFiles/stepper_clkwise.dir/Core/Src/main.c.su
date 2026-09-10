@@ -1,0 +1,5 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/stepper_clkwise/Core/Src/main.c:11:6:Stepper_Step	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/stepper_clkwise/Core/Src/main.c:24:5:main	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/stepper_clkwise/Core/Src/main.c:72:6:SystemClock_Config	88	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/stepper_clkwise/Core/Src/main.c:152:13:MX_GPIO_Init	32	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/stepper_clkwise/Core/Src/main.c:189:6:Error_Handler	4	static,ignoring_inline_asm
