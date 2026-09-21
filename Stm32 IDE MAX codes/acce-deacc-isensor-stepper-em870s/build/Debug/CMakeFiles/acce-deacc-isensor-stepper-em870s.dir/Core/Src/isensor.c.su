@@ -1,0 +1,8 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/isensor.c:15:26:INA219_WriteRegister	40	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/isensor.c:37:26:INA219_ReadRegister	40	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/isensor.c:72:9:INA219_IsConnected	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/isensor.c:90:19:INA219_Init	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/isensor.c:122:19:INA219_ReadShuntVoltage	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/isensor.c:155:19:INA219_ReadBusVoltage	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/isensor.c:191:19:INA219_ReadCurrent	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/isensor.c:234:19:INA219_ReadPower	24	static

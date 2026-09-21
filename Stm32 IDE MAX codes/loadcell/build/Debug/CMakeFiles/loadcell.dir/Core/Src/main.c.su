@@ -1,0 +1,9 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/loadcell/Core/Src/main.c:31:13:UART_SendString	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/loadcell/Core/Src/main.c:46:16:HX711_Ready	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/loadcell/Core/Src/main.c:61:16:HX711_Read	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/loadcell/Core/Src/main.c:132:16:HX711_Read_Average	56	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/loadcell/Core/Src/main.c:149:5:main	120	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/loadcell/Core/Src/main.c:252:6:SystemClock_Config	88	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/loadcell/Core/Src/main.c:330:13:MX_USART2_UART_Init	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/loadcell/Core/Src/main.c:366:13:MX_GPIO_Init	40	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/loadcell/Core/Src/main.c:427:6:Error_Handler	4	static,ignoring_inline_asm

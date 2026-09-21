@@ -1,0 +1,7 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/joystick_values_servo/Core/Src/main.c:489:17:Joystick_Read_Average.part.0	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/joystick_values_servo/Core/Src/main.c:591:26:Servo_Write.constprop.isra	32	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/joystick_values_servo/Core/Src/main.c:747:13:Servo_SetSpeed	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/joystick_values_servo/Core/Src/main.c:137:5:_write	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/joystick_values_servo/Core/Src/main.c:1086:6:SystemClock_Config	88	static,ignoring_inline_asm
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/joystick_values_servo/Core/Src/main.c:154:5:main	56	static,ignoring_inline_asm
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/joystick_values_servo/Core/Src/main.c:1178:6:Error_Handler	0	static,ignoring_inline_asm

@@ -1,0 +1,26 @@
+# ninja log v7
+52	453	8111733896503678	CMakeFiles/joystick_values.dir/startup_stm32f446xx.s.obj	b4edbcb9b87fb468
+21	4127	8111733896192916	CMakeFiles/joystick_values.dir/Core/Src/stm32f4xx_it.c.obj	d38f29b432e52375
+36	4193	8111733896346822	CMakeFiles/joystick_values.dir/Core/Src/sysmem.c.obj	3d786a8d0d5eb7de
+44	4213	8111733896423934	CMakeFiles/joystick_values.dir/Core/Src/syscalls.c.obj	bc89ea15cd7f8086
+28	4328	8111733896267092	CMakeFiles/joystick_values.dir/Core/Src/stm32f4xx_hal_msp.c.obj	40065ad46e93d89e
+454	4393	8111733900525891	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f4xx.c.obj	653eeec0ad75584b
+8	4442	8111733896060683	CMakeFiles/joystick_values.dir/Core/Src/main.c.obj	c193726ea5eccb2b
+4393	6292	8111733939913916	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj	48acd5bd60170e35
+4193	6919	8111733937914307	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c.obj	e0b07b38c9d99849
+4213	6956	8111733938119004	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj	c4c255e9c43dd873
+4128	7006	8111733937261204	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c.obj	bda7c708df5c3099
+4443	7043	8111733940413329	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj	b7414a69e92e2ec
+4328	7437	8111733939266368	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj	7133f2259d14187d
+6293	7524	8111733958909211	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj	70a2ad4e81161d6
+7043	7705	8111733966417664	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj	2851a29cc36cfd6d
+6956	7808	8111733965547542	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj	dce7c1c7c64acef6
+7006	7869	8111733966047525	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj	f93632f9be723a94
+6919	7906	8111733965168456	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj	e36a22171a4c761b
+7437	8229	8111733970355230	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj	b2f5614acbff990c
+7524	8316	8111733971226739	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj	c96c706ba2de9df2
+7705	8447	8111733973025779	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj	222fd7d8da8629a7
+7808	8504	8111733974064949	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj	ad9b73509fdfb711
+7906	8515	8111733975037529	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/BSP/STM32F4xx-Nucleo/stm32f4xx_nucleo.c.obj	31b12c55c7290f7e
+7869	9030	8111733974665108	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj	c1732ec794f235e5
+9030	9794	8111733986284255	joystick_values.elf	d665dade2b588797

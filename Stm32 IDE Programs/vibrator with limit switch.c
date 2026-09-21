@@ -1,4 +1,4 @@
-// vibrator with limit switch...pao as vibrator as gpio output
+// vibrator with limit switch...pao for vibrator as gpio output
 // pb0 as gpio input for limit switch
 
 #include "main.h"

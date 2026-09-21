@@ -1,0 +1,7 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/stm32f4xx_hal_msp.c:51:6:HAL_MspInit	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/stm32f4xx_hal_msp.c:76:6:HAL_I2C_MspInit	48	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/stm32f4xx_hal_msp.c:118:6:HAL_I2C_MspDeInit	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/stm32f4xx_hal_msp.c:152:6:HAL_TIM_Base_MspInit	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/stm32f4xx_hal_msp.c:178:6:HAL_TIM_Base_MspDeInit	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/stm32f4xx_hal_msp.c:203:6:HAL_UART_MspInit	48	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/acce-deacc-isensor-stepper-em870s/Core/Src/stm32f4xx_hal_msp.c:240:6:HAL_UART_MspDeInit	16	static
