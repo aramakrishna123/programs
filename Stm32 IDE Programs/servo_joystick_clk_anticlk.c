@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdint.h>
+#include <stdio.h>
 
 /*
  * ============================================================
@@ -18,8 +19,16 @@
  * MAX485:
  *
  * PA8  -> DE + /RE
- * PA9  -> DI
- * PA10 -> RO
+ * PA9  -> DI / USART1_TX
+ * PA10 -> RO / USART1_RX
+ *
+ *
+ * SERIAL MONITOR:
+ *
+ * PA2 -> USART2_TX
+ * PA3 -> USART2_RX
+ *
+ * USART2 = 115200 8-N-1
  *
  *
  * SERVO:
@@ -32,6 +41,11 @@
  * Goal Speed       = Register 46
  * EEPROM Lock      = Register 55
  *
+ * Feedback:
+ *
+ * Present Speed    = Register 58-59
+ * Moving           = Register 66
+ *
  * ============================================================
  */
 
@@ -41,7 +55,9 @@
  * ============================================================ */
 
 ADC_HandleTypeDef hadc1;
+
 UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart2;
 
 
 /* ============================================================
@@ -64,7 +80,11 @@ UART_HandleTypeDef huart1;
 #define REG_GOAL_SPEED_L       46U
 #define REG_LOCK               55U
 
+#define REG_PRESENT_SPEED_L    58U
+#define REG_MOVING             66U
+
 #define INST_WRITE             0x03U
+#define INST_READ              0x02U
 
 
 /* ============================================================
@@ -84,6 +104,33 @@ UART_HandleTypeDef huart1;
 
 #define SPEED_STEP             50
 
+#define STOP_BEFORE_REVERSE_MS 100U
+
+
+/* ============================================================
+ * IMPORTANT DIRECTION SETTING
+ *
+ * Your physical test showed:
+ *
+ * servo raw negative command -> CLOCKWISE
+ * servo raw positive command -> not rotating
+ *
+ * Therefore keep this enabled so:
+ *
+ * UP     software +speed -> raw negative command
+ * DOWN   software -speed -> raw positive command
+ *
+ * ============================================================ */
+
+#define SERVO_DIRECTION_INVERT 1U
+
+
+/* ============================================================
+ * DEBUG PRINT INTERVAL
+ * ============================================================ */
+
+#define DEBUG_PRINT_INTERVAL   200U
+
 
 /* ============================================================
  * FUNCTION PROTOTYPES
@@ -94,6 +141,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_USART1_UART_Init(void);
+static void MX_USART2_UART_Init(void);
 
 static uint16_t Joystick_Read(void);
 static uint16_t Joystick_Read_Average(uint16_t samples);
@@ -102,8 +150,12 @@ static uint16_t Joystick_CalibrateCenter(void);
 static void RS485_TX_Mode(void);
 static void RS485_RX_Mode(void);
 
-static uint8_t Servo_Checksum(uint8_t *packet,
-                              uint8_t length);
+static uint8_t Servo_Checksum(
+    uint8_t *packet,
+    uint8_t length
+);
+
+static void Servo_FlushRx(void);
 
 static HAL_StatusTypeDef Servo_Write(
     uint8_t id,
@@ -112,10 +164,53 @@ static HAL_StatusTypeDef Servo_Write(
     uint8_t data_length
 );
 
+static HAL_StatusTypeDef Servo_Read(
+    uint8_t id,
+    uint8_t address,
+    uint8_t data_length,
+    uint8_t *data
+);
+
+static int16_t Servo_ReadPresentSpeed(void);
+
+static uint8_t Servo_ReadMoving(void);
+
+static uint16_t Servo_GetRawSpeedValue(
+    int16_t speed
+);
+
 static void Servo_Torque(uint8_t enable);
+
 static void Servo_SetWheelMode(void);
-static void Servo_SetAcceleration(uint8_t acceleration);
-static void Servo_SetSpeed(int16_t speed);
+
+static void Servo_SetAcceleration(
+    uint8_t acceleration
+);
+
+static void Servo_SetSpeed(
+    int16_t speed
+);
+
+
+/* ============================================================
+ * PRINTF REDIRECT
+ *
+ * USART2 -> Serial Monitor
+ * ============================================================ */
+
+int _write(int file,
+           char *ptr,
+           int len)
+{
+    HAL_UART_Transmit(
+        &huart2,
+        (uint8_t *)ptr,
+        (uint16_t)len,
+        HAL_MAX_DELAY
+    );
+
+    return len;
+}
 
 
 /* ============================================================
@@ -132,7 +227,29 @@ int main(void)
 
     MX_USART1_UART_Init();
 
+    MX_USART2_UART_Init();
+
     MX_ADC1_Init();
+
+
+    /* ========================================================
+     * SERIAL STARTUP MESSAGE
+     * ======================================================== */
+
+    printf("\r\n");
+    printf("==============================================\r\n");
+    printf("RSBL35-24-HS JOYSTICK SERVO CONTROL\r\n");
+    printf("==============================================\r\n");
+    printf("Servo ID       : %d\r\n", SERVO_ID);
+    printf("Joystick       : VRY -> PA0\r\n");
+    printf("UP             : CLOCKWISE\r\n");
+    printf("CENTER         : STOP\r\n");
+    printf("DOWN           : ANTICLOCKWISE\r\n");
+    printf("USART1         : 1000000 baud\r\n");
+    printf("USART2         : 115200 baud\r\n");
+    printf("Direction Inv. : %d\r\n",
+           SERVO_DIRECTION_INVERT);
+    printf("==============================================\r\n");
 
 
     /* ========================================================
@@ -230,8 +347,7 @@ int main(void)
     /* ========================================================
      * JOYSTICK CENTER CALIBRATION
      *
-     * IMPORTANT:
-     * Keep joystick at CENTER while board starts.
+     * KEEP JOYSTICK CENTER
      * ======================================================== */
 
     uint16_t joystick_center =
@@ -247,6 +363,14 @@ int main(void)
     HAL_Delay(200);
 
 
+    printf("\r\n");
+    printf("Joystick Center = %u\r\n",
+           joystick_center);
+
+    printf("System READY\r\n");
+    printf("----------------------------------------------\r\n");
+
+
     /* ========================================================
      * VARIABLES
      * ======================================================== */
@@ -257,9 +381,9 @@ int main(void)
 
     uint32_t distance;
 
-    uint32_t left_range;
+    uint32_t down_range;
 
-    uint32_t right_range;
+    uint32_t up_range;
 
     uint32_t common_range;
 
@@ -270,6 +394,14 @@ int main(void)
     int16_t target_speed = 0;
 
     int16_t current_speed = 0;
+
+    int16_t feedback_speed = 0;
+
+    uint8_t moving = 0U;
+
+    uint16_t raw_servo_value = 0U;
+
+    uint32_t last_debug_time = 0U;
 
 
     /* ========================================================
@@ -303,7 +435,7 @@ int main(void)
 
 
         /* ====================================================
-         * CALCULATE OFFSET FROM CENTER
+         * OFFSET FROM CENTER
          *
          * Positive = UP
          * Negative = DOWN
@@ -315,43 +447,38 @@ int main(void)
 
 
         /* ====================================================
-         * CALCULATE JOYSTICK RANGES
+         * JOYSTICK RANGE
          * ==================================================== */
 
-        left_range =
-            joystick_center -
+        down_range =
+            (uint32_t)joystick_center -
             JOYSTICK_DEADZONE;
 
 
-        right_range =
+        up_range =
             4095U -
-            joystick_center -
+            (uint32_t)joystick_center -
             JOYSTICK_DEADZONE;
 
 
         /* ====================================================
-         * USE COMMON RANGE
+         * COMMON RANGE
          *
-         * This makes the speed mapping equal in both
-         * directions.
+         * Equal mapping both directions.
          * ==================================================== */
 
-        if (left_range < right_range)
+        if (down_range < up_range)
         {
-            common_range = left_range;
+            common_range = down_range;
         }
         else
         {
-            common_range = right_range;
+            common_range = up_range;
         }
 
 
         /* ====================================================
          * UP -> CLOCKWISE
-         *
-         * ADC ABOVE CENTER
-         *
-         * POSITIVE SERVO SPEED
          * ==================================================== */
 
         if (offset >
@@ -382,8 +509,6 @@ int main(void)
                     );
 
 
-                /* Minimum speed */
-
                 if ((magnitude > 0U) &&
                     (magnitude < MIN_CW_SPEED))
                 {
@@ -391,8 +516,6 @@ int main(void)
                         MIN_CW_SPEED;
                 }
 
-
-                /* Maximum speed */
 
                 if (magnitude >
                     MAX_CW_SPEED)
@@ -403,7 +526,7 @@ int main(void)
 
 
                 /*
-                 * POSITIVE = CLOCKWISE
+                 * UP = positive software speed
                  */
 
                 target_speed =
@@ -414,10 +537,6 @@ int main(void)
 
         /* ====================================================
          * DOWN -> ANTICLOCKWISE
-         *
-         * ADC BELOW CENTER
-         *
-         * NEGATIVE SERVO SPEED
          * ==================================================== */
 
         else if (offset <
@@ -448,8 +567,6 @@ int main(void)
                     );
 
 
-                /* Minimum speed */
-
                 if ((magnitude > 0U) &&
                     (magnitude < MIN_CCW_SPEED))
                 {
@@ -457,8 +574,6 @@ int main(void)
                         MIN_CCW_SPEED;
                 }
 
-
-                /* Maximum speed */
 
                 if (magnitude >
                     MAX_CCW_SPEED)
@@ -469,7 +584,7 @@ int main(void)
 
 
                 /*
-                 * NEGATIVE = ANTICLOCKWISE
+                 * DOWN = negative software speed
                  */
 
                 target_speed =
@@ -491,7 +606,7 @@ int main(void)
         /* ====================================================
          * DIRECTION CHANGE
          *
-         * Stop before reversing direction.
+         * Stop before reversing.
          * ==================================================== */
 
         if (((current_speed > 0) &&
@@ -503,7 +618,9 @@ int main(void)
 
             Servo_SetSpeed(0);
 
-            HAL_Delay(100);
+            HAL_Delay(
+                STOP_BEFORE_REVERSE_MS
+            );
         }
 
 
@@ -541,6 +658,112 @@ int main(void)
          * ==================================================== */
 
         Servo_SetSpeed(current_speed);
+
+
+        /* ====================================================
+         * RAW COMMAND VALUE
+         * ==================================================== */
+
+        raw_servo_value =
+            Servo_GetRawSpeedValue(
+                current_speed
+            );
+
+
+        /* ====================================================
+         * FEEDBACK EVERY 200 ms
+         * ==================================================== */
+
+        if ((HAL_GetTick() -
+             last_debug_time) >=
+            DEBUG_PRINT_INTERVAL)
+        {
+            last_debug_time =
+                HAL_GetTick();
+
+
+            /* Read present speed */
+
+            feedback_speed =
+                Servo_ReadPresentSpeed();
+
+
+            /* Read moving flag */
+
+            moving =
+                Servo_ReadMoving();
+
+
+            /* =================================================
+             * SERIAL MONITOR
+             * ================================================= */
+
+            printf(
+                "ADC=%4u | Center=%4u | Offset=%5ld | ",
+                adc_value,
+                joystick_center,
+                (long)offset
+            );
+
+
+            printf(
+                "Target=%5d | Current=%5d | ",
+                target_speed,
+                current_speed
+            );
+
+
+            /* Requested direction */
+
+            if (current_speed > 0)
+            {
+                printf(
+                    "REQ=CLOCKWISE | "
+                );
+            }
+            else if (current_speed < 0)
+            {
+                printf(
+                    "REQ=ANTICLOCKWISE | "
+                );
+            }
+            else
+            {
+                printf(
+                    "REQ=STOP | "
+                );
+            }
+
+
+            printf(
+                "RAW=0x%04X | ",
+                raw_servo_value
+            );
+
+
+            /* Feedback */
+
+            if (feedback_speed >= 0)
+            {
+                printf(
+                    "FB_SPEED=%5d | ",
+                    feedback_speed
+                );
+            }
+            else
+            {
+                printf(
+                    "FB_SPEED=%5d | ",
+                    feedback_speed
+                );
+            }
+
+
+            printf(
+                "MOVING=%u\r\n",
+                moving
+            );
+        }
 
 
         HAL_Delay(20);
@@ -617,7 +840,7 @@ static uint16_t Joystick_Read_Average(
 static uint16_t Joystick_CalibrateCenter(void)
 {
     /*
-     * Keep joystick at CENTER during startup.
+     * Keep joystick at CENTER.
      */
 
     return
@@ -656,6 +879,35 @@ static void RS485_RX_Mode(void)
 
 
 /* ============================================================
+ * FLUSH RS485 RX BUFFER
+ *
+ * Important because non-broadcast servo commands can produce
+ * status responses.
+ * ============================================================ */
+
+static void Servo_FlushRx(void)
+{
+    uint8_t dummy;
+
+
+    while (__HAL_UART_GET_FLAG(
+               &huart1,
+               UART_FLAG_RXNE) != RESET)
+    {
+        HAL_UART_Receive(
+            &huart1,
+            &dummy,
+            1U,
+            1U
+        );
+    }
+
+
+    __HAL_UART_CLEAR_OREFLAG(&huart1);
+}
+
+
+/* ============================================================
  * SERVO CHECKSUM
  * ============================================================ */
 
@@ -689,8 +941,18 @@ static HAL_StatusTypeDef Servo_Write(
     uint8_t *data,
     uint8_t data_length)
 {
-    uint8_t packet[16];
+    uint8_t packet[32];
 
+
+    /*
+     * WRITE DATA:
+     *
+     * Length = data bytes + 3
+     *
+     * Instruction
+     * Address
+     * Data
+     */
 
     uint8_t length =
         (uint8_t)(
@@ -700,9 +962,13 @@ static HAL_StatusTypeDef Servo_Write(
 
     packet[0] = 0xFFU;
     packet[1] = 0xFFU;
+
     packet[2] = id;
+
     packet[3] = length;
+
     packet[4] = INST_WRITE;
+
     packet[5] = address;
 
 
@@ -731,6 +997,13 @@ static HAL_StatusTypeDef Servo_Write(
 
 
     /* ========================================================
+     * CLEAR OLD RX DATA
+     * ======================================================== */
+
+    Servo_FlushRx();
+
+
+    /* ========================================================
      * TX MODE
      * ======================================================== */
 
@@ -740,7 +1013,7 @@ static HAL_StatusTypeDef Servo_Write(
 
 
     /* ========================================================
-     * TRANSMIT
+     * SEND
      * ======================================================== */
 
     HAL_StatusTypeDef status =
@@ -753,7 +1026,7 @@ static HAL_StatusTypeDef Servo_Write(
 
 
     /* ========================================================
-     * WAIT FOR TRANSMISSION COMPLETE
+     * WAIT TX COMPLETE
      * ======================================================== */
 
     while (__HAL_UART_GET_FLAG(
@@ -773,7 +1046,470 @@ static HAL_StatusTypeDef Servo_Write(
     RS485_RX_Mode();
 
 
+    /*
+     * Give servo time to return status packet.
+     */
+
+    HAL_Delay(1);
+
+
+    /*
+     * Discard status response.
+     */
+
+    Servo_FlushRx();
+
+
     return status;
+}
+
+
+/* ============================================================
+ * SERVO READ
+ *
+ * READ DATA:
+ *
+ * FF FF ID 04 02 ADDRESS LENGTH CHECKSUM
+ *
+ * ============================================================ */
+
+static HAL_StatusTypeDef Servo_Read(
+    uint8_t id,
+    uint8_t address,
+    uint8_t data_length,
+    uint8_t *data)
+{
+    uint8_t packet[16];
+
+    uint8_t response[32];
+
+
+    /* ========================================================
+     * BUILD READ REQUEST
+     * ======================================================== */
+
+    packet[0] = 0xFFU;
+    packet[1] = 0xFFU;
+
+    packet[2] = id;
+
+    /*
+     * READ command always has:
+     *
+     * instruction
+     * address
+     * read length
+     *
+     * Length field = 4
+     */
+
+    packet[3] = 4U;
+
+    packet[4] = INST_READ;
+
+    packet[5] = address;
+
+    packet[6] = data_length;
+
+
+    packet[7] =
+        Servo_Checksum(
+            packet,
+            7U
+        );
+
+
+    /* ========================================================
+     * FLUSH OLD DATA
+     * ======================================================== */
+
+    Servo_FlushRx();
+
+
+    /* ========================================================
+     * TX MODE
+     * ======================================================== */
+
+    RS485_TX_Mode();
+
+    HAL_Delay(1);
+
+
+    /* ========================================================
+     * SEND REQUEST
+     * ======================================================== */
+
+    if (HAL_UART_Transmit(
+            &huart1,
+            packet,
+            8U,
+            100U
+        ) != HAL_OK)
+    {
+        RS485_RX_Mode();
+
+        return HAL_ERROR;
+    }
+
+
+    /* ========================================================
+     * WAIT TX COMPLETE
+     * ======================================================== */
+
+    while (__HAL_UART_GET_FLAG(
+               &huart1,
+               UART_FLAG_TC) == RESET)
+    {
+    }
+
+
+    HAL_Delay(1);
+
+
+    /* ========================================================
+     * RX MODE
+     * ======================================================== */
+
+    RS485_RX_Mode();
+
+
+    /* ========================================================
+     * EXPECTED RESPONSE SIZE
+     *
+     * Total:
+     *
+     * Header     = 2
+     * ID         = 1
+     * Length     = 1
+     * Remaining  = length + 1
+     *
+     * For 2-byte read:
+     *
+     * 2 + 1 + 1 + 5 = 9?
+     *
+     * Actual protocol response for 2 data bytes:
+     *
+     * FF FF ID 04 ERROR DATA DATA CHECKSUM
+     *
+     * Total = 8
+     *
+     * ======================================================== */
+
+    uint16_t expected_length =
+        (uint16_t)(
+            data_length + 6U
+        );
+
+
+    if (expected_length >
+        sizeof(response))
+    {
+        return HAL_ERROR;
+    }
+
+
+    /* ========================================================
+     * RECEIVE
+     * ======================================================== */
+
+    if (HAL_UART_Receive(
+            &huart1,
+            response,
+            expected_length,
+            20U
+        ) != HAL_OK)
+    {
+        return HAL_TIMEOUT;
+    }
+
+
+    /* ========================================================
+     * HEADER CHECK
+     * ======================================================== */
+
+    if ((response[0] != 0xFFU) ||
+        (response[1] != 0xFFU))
+    {
+        return HAL_ERROR;
+    }
+
+
+    /* ========================================================
+     * ID CHECK
+     * ======================================================== */
+
+    if (response[2] != id)
+    {
+        return HAL_ERROR;
+    }
+
+
+    /* ========================================================
+     * LENGTH CHECK
+     *
+     * Error + data + checksum
+     *
+     * length = data_length + 2
+     * ======================================================== */
+
+    if (response[3] !=
+        (uint8_t)(
+            data_length + 2U
+        ))
+    {
+        return HAL_ERROR;
+    }
+
+
+    /* ========================================================
+     * ERROR BYTE
+     *
+     * response[4]
+     * ======================================================== */
+
+    if (response[4] != 0U)
+    {
+        return HAL_ERROR;
+    }
+
+
+    /* ========================================================
+     * CHECKSUM
+     * ======================================================== */
+
+    if (Servo_Checksum(
+            response,
+            (uint8_t)(
+                expected_length - 1U
+            )
+        ) !=
+        response[
+            expected_length - 1U
+        ])
+    {
+        return HAL_ERROR;
+    }
+
+
+    /* ========================================================
+     * COPY DATA
+     * ======================================================== */
+
+    for (uint8_t i = 0U;
+         i < data_length;
+         i++)
+    {
+        data[i] =
+            response[5U + i];
+    }
+
+
+    return HAL_OK;
+}
+
+
+/* ============================================================
+ * READ PRESENT SPEED
+ *
+ * Register 58 = low byte
+ * Register 59 = high byte
+ *
+ * Bit 15 = direction
+ * ============================================================ */
+
+static int16_t Servo_ReadPresentSpeed(void)
+{
+    uint8_t data[2];
+
+
+    if (Servo_Read(
+            SERVO_ID,
+            REG_PRESENT_SPEED_L,
+            2U,
+            data
+        ) != HAL_OK)
+    {
+        return 0;
+    }
+
+
+    uint16_t raw =
+        (uint16_t)data[0] |
+        ((uint16_t)data[1] << 8);
+
+
+    if (raw & 0x8000U)
+    {
+        return
+            -(int16_t)(
+                raw & 0x7FFFU
+            );
+    }
+
+
+    return
+        (int16_t)raw;
+}
+
+
+/* ============================================================
+ * READ MOVING
+ *
+ * Register 66
+ * ============================================================ */
+
+static uint8_t Servo_ReadMoving(void)
+{
+    uint8_t data[1];
+
+
+    if (Servo_Read(
+            SERVO_ID,
+            REG_MOVING,
+            1U,
+            data
+        ) != HAL_OK)
+    {
+        return 0U;
+    }
+
+
+    return data[0];
+}
+
+
+/* ============================================================
+ * GET RAW SERVO SPEED VALUE
+ *
+ * This is the EXACT 16-bit value sent to register 46.
+ *
+ * ============================================================ */
+
+static uint16_t Servo_GetRawSpeedValue(
+    int16_t speed)
+{
+    int16_t command_speed;
+
+    uint16_t value;
+
+
+    command_speed = speed;
+
+
+    /* ========================================================
+     * DIRECTION INVERSION
+     * ======================================================== */
+
+    if (SERVO_DIRECTION_INVERT)
+    {
+        command_speed =
+            (int16_t)(-command_speed);
+    }
+
+
+    /* ========================================================
+     * STOP
+     * ======================================================== */
+
+    if (command_speed == 0)
+    {
+        return 0U;
+    }
+
+
+    /* ========================================================
+     * POSITIVE RAW SPEED
+     * ======================================================== */
+
+    if (command_speed > 0)
+    {
+        uint16_t magnitude =
+            (uint16_t)command_speed;
+
+
+        if (magnitude >
+            MAX_CW_SPEED)
+        {
+            magnitude =
+                MAX_CW_SPEED;
+        }
+
+
+        value = magnitude;
+    }
+
+
+    /* ========================================================
+     * NEGATIVE RAW SPEED
+     * ======================================================== */
+
+    else
+    {
+        uint16_t magnitude =
+            (uint16_t)(-command_speed);
+
+
+        if (magnitude >
+            MAX_CCW_SPEED)
+        {
+            magnitude =
+                MAX_CCW_SPEED;
+        }
+
+
+        value =
+            magnitude |
+            0x8000U;
+    }
+
+
+    return value;
+}
+
+
+/* ============================================================
+ * SERVO SET SPEED
+ * ============================================================ */
+
+static void Servo_SetSpeed(
+    int16_t speed)
+{
+    uint16_t value;
+
+
+    uint8_t data[2];
+
+
+    value =
+        Servo_GetRawSpeedValue(
+            speed
+        );
+
+
+    /* LOW BYTE */
+
+    data[0] =
+        (uint8_t)(
+            value &
+            0x00FFU
+        );
+
+
+    /* HIGH BYTE */
+
+    data[1] =
+        (uint8_t)(
+            (value >> 8) &
+            0x00FFU
+        );
+
+
+    Servo_Write(
+        SERVO_ID,
+        REG_GOAL_SPEED_L,
+        data,
+        2U
+    );
 }
 
 
@@ -831,75 +1567,6 @@ static void Servo_SetAcceleration(
 
 
 /* ============================================================
- * SERVO SPEED
- *
- * Positive = CLOCKWISE
- * Negative = ANTICLOCKWISE
- *
- * Bit 15 = direction
- * ============================================================ */
-
-static void Servo_SetSpeed(int16_t speed)
-{
-    uint16_t value;
-
-
-    if (speed >= 0)
-    {
-        /*
-         * Positive = CLOCKWISE
-         */
-
-        value =
-            (uint16_t)speed;
-    }
-    else
-    {
-        /*
-         * Negative = ANTICLOCKWISE
-         */
-
-        uint16_t magnitude =
-            (uint16_t)(-speed);
-
-
-        value =
-            magnitude |
-            0x8000U;
-    }
-
-
-    uint8_t data[2];
-
-
-    /* LOW BYTE */
-
-    data[0] =
-        (uint8_t)(
-            value &
-            0x00FFU
-        );
-
-
-    /* HIGH BYTE */
-
-    data[1] =
-        (uint8_t)(
-            (value >> 8) &
-            0x00FFU
-        );
-
-
-    Servo_Write(
-        SERVO_ID,
-        REG_GOAL_SPEED_L,
-        data,
-        2U
-    );
-}
-
-
-/* ============================================================
  * GPIO INITIALIZATION
  * ============================================================ */
 
@@ -911,11 +1578,11 @@ static void MX_GPIO_Init(void)
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
 
-    __HAL_RCC_GPIOC_CLK_ENABLE();
-
 
     /* ========================================================
      * PA0 = ADC1_IN0
+     *
+     * HW-504 VRY
      * ======================================================== */
 
     GPIO_InitStruct.Pin =
@@ -996,13 +1663,12 @@ static void MX_GPIO_Init(void)
 
 
 /* ============================================================
- * USART1 INITIALIZATION
+ * USART1
  *
  * PA9  = TX
  * PA10 = RX
  *
- * 1,000,000 baud
- * 8-N-1
+ * 1 Mbps
  * ============================================================ */
 
 static void MX_USART1_UART_Init(void)
@@ -1033,7 +1699,8 @@ static void MX_USART1_UART_Init(void)
         UART_OVERSAMPLING_16;
 
 
-    if (HAL_UART_Init(&huart1)
+    if (HAL_UART_Init(
+            &huart1)
         != HAL_OK)
     {
         Error_Handler();
@@ -1042,7 +1709,53 @@ static void MX_USART1_UART_Init(void)
 
 
 /* ============================================================
- * ADC1 INITIALIZATION
+ * USART2
+ *
+ * PA2  = TX
+ * PA3  = RX
+ *
+ * 115200
+ * ============================================================ */
+
+static void MX_USART2_UART_Init(void)
+{
+    huart2.Instance =
+        USART2;
+
+
+    huart2.Init.BaudRate =
+        115200U;
+
+    huart2.Init.WordLength =
+        UART_WORDLENGTH_8B;
+
+    huart2.Init.StopBits =
+        UART_STOPBITS_1;
+
+    huart2.Init.Parity =
+        UART_PARITY_NONE;
+
+    huart2.Init.Mode =
+        UART_MODE_TX_RX;
+
+    huart2.Init.HwFlowCtl =
+        UART_HWCONTROL_NONE;
+
+    huart2.Init.OverSampling =
+        UART_OVERSAMPLING_16;
+
+
+    if (HAL_UART_Init(
+            &huart2)
+        != HAL_OK)
+    {
+        Error_Handler();
+    }
+}
+
+
+/* ============================================================
+ * ADC1
  *
  * PA0 = ADC1_IN0
  * ============================================================ */
@@ -1091,7 +1804,8 @@ static void MX_ADC1_Init(void)
         ADC_EOC_SINGLE_CONV;
 
 
-    if (HAL_ADC_Init(&hadc1)
+    if (HAL_ADC_Init(
+            &hadc1)
         != HAL_OK)
     {
         Error_Handler();
@@ -1099,7 +1813,7 @@ static void MX_ADC1_Init(void)
 
 
     /* ========================================================
-     * ADC CHANNEL 0
+     * CHANNEL 0
      * ======================================================== */
 
     sConfig.Channel =
@@ -1186,7 +1900,7 @@ void SystemClock_Config(void)
 
 
     /* ========================================================
-     * CLOCK CONFIGURATION
+     * CLOCKS
      * ======================================================== */
 
     RCC_ClkInitStruct.ClockType =
