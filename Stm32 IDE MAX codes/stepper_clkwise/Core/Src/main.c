@@ -11,10 +11,10 @@ static void MX_GPIO_Init(void);
 void Stepper_Step(void)
 {
     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
-    HAL_Delay(5);
+    HAL_Delay(1);
 
     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
-    HAL_Delay(4);
+    HAL_Delay(1);
 }
 
 

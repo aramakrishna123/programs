@@ -1,4 +1,4 @@
-# Install script for directory: E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/encoder_mm/cmake/stm32cubemx
+# Install script for directory: E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/stepper_encoder_mm/cmake/stm32cubemx
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,6 +40,6 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/encoder_mm/build/Debug/cmake/stm32cubemx/install_local_manifest.txt"
+  file(WRITE "E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/stepper_encoder_mm/build/Debug/cmake/stm32cubemx/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

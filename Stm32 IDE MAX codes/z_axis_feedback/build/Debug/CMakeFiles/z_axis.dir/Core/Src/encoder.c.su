@@ -1,0 +1,8 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis2/Core/Src/encoder.c:32:16:Encoder_ReadState	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis2/Core/Src/encoder.c:63:6:Encoder_Init	32	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis2/Core/Src/encoder.c:143:6:Encoder_Reset	8	static,ignoring_inline_asm
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis2/Core/Src/encoder.c:172:6:Encoder_Update	4	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis2/Core/Src/encoder.c:181:9:Encoder_GetCount	16	static,ignoring_inline_asm
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis2/Core/Src/encoder.c:202:8:Encoder_GetDirection	16	static,ignoring_inline_asm
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis2/Core/Src/encoder.c:223:9:Encoder_GetPositionMM	64	static,ignoring_inline_asm
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis2/Core/Src/encoder.c:253:6:HAL_GPIO_EXTI_Callback	24	static

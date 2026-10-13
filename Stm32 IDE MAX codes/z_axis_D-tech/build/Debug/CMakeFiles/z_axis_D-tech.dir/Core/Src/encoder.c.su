@@ -1,0 +1,6 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis_D-tech/Core/Src/encoder.c:18:6:Encoder_Init	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis_D-tech/Core/Src/encoder.c:36:6:Encoder_Update	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis_D-tech/Core/Src/encoder.c:78:9:Encoder_GetCount	4	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis_D-tech/Core/Src/encoder.c:85:9:Encoder_GetPositionUM	4	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis_D-tech/Core/Src/encoder.c:93:7:Encoder_GetPositionMM	8	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis_D-tech/Core/Src/encoder.c:100:6:Encoder_Reset	4	static

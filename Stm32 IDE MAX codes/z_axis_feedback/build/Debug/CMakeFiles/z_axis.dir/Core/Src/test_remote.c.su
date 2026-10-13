@@ -1,0 +1,4 @@
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis2/Core/Inc/remote_joystick.h:34:13:Remote_Feed	24	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis2/Core/Inc/remote_joystick.h:73:17:Remote_Get	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis2/Core/Src/test_remote.c:6:13:feed	16	static
+E:/INTERN/Stm32cube IDE/Stm32 IDE MAX codes/z_axis2/Core/Src/test_remote.c:7:5:test_remote	8	static
